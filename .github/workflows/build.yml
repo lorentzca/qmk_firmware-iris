@@ -44,8 +44,7 @@ jobs:
         release_name: Release ${{ github.ref }}
         body: |
           Changes in this Release
-          - First Change
-          - Second Change
+          - test body.
         draft: false
         prerelease: false
 
