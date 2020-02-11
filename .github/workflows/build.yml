@@ -22,3 +22,7 @@ jobs:
         mv /tmp/lufa-master/LUFA lib/lufa/
         make keebio/iris/rev2:lorentzca
         mv -v .build/keebio_iris_rev2_lorentzca.hex .build/keebio_iris_rev2_lorentzca_${GITHUB_RUN_ID}.hex
+    - uses: actions/upload-artifact@v1
+      with:
+        name: firmware
+        path: .build/keebio_iris_rev2_lorentzca_${{ github.run_id }}.hex
