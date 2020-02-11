@@ -1,6 +1,11 @@
-name: Build firmware
+name: Build and Release firmware
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - v*
 
 jobs:
   build:
@@ -14,6 +19,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
     - uses: docker://qmkfm/base_container:latest
     - name: make
       run: |
@@ -22,10 +28,12 @@ jobs:
         mv /tmp/lufa-master/LUFA lib/lufa/
         make keebio/iris/rev2:lorentzca
         mv -v .build/keebio_iris_rev2_lorentzca.hex .build/keebio_iris_rev2_lorentzca_${GITHUB_RUN_ID}.hex
+
     - uses: actions/upload-artifact@v1
       with:
         name: firmware
         path: .build/keebio_iris_rev2_lorentzca_${{ github.run_id }}.hex
+
     - name: create release
       id: create_release
       uses: actions/create-release@v1
@@ -40,6 +48,7 @@ jobs:
           - Second Change
         draft: false
         prerelease: false
+
     - name: Upload Release Asset
       uses: actions/upload-release-asset@v1
       env:
