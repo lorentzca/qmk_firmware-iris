@@ -27,6 +27,7 @@ jobs:
         name: firmware
         path: .build/keebio_iris_rev2_lorentzca_${{ github.run_id }}.hex
     - name: create release
+      id: create_release
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
