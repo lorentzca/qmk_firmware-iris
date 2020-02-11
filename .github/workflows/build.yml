@@ -41,9 +41,9 @@ jobs:
         prerelease: false
     - name: Upload Release Asset
       uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: .build/keebio_iris_rev2_lorentzca_${{ github.run_id }}.hex
-          asset_name: keebio_iris_rev2_lorentzca_${{ github.run_id }}.hex
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: .build/keebio_iris_rev2_lorentzca_${{ github.run_id }}.hex
+        asset_name: keebio_iris_rev2_lorentzca_${{ github.run_id }}.hex
