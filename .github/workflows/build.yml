@@ -48,3 +48,4 @@ jobs:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: .build/keebio_iris_rev2_lorentzca_${{ github.run_id }}.hex
         asset_name: keebio_iris_rev2_lorentzca_${{ github.run_id }}.hex
+        asset_content_type: application/octet-stream
