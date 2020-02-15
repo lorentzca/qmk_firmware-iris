@@ -9,9 +9,9 @@
 
 enum custom_keycodes {
   QWERTY = SAFE_RANGE,
+  EUCALYN,
   LOWER,
   RAISE,
-  EUCALYN,
   ADJUST,
 };
 
