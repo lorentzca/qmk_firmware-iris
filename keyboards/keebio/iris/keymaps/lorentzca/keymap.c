@@ -2,9 +2,9 @@
 
 
 #define _QWERTY 0
-#define _LOWER 1
-#define _RAISE 2
-#define _EUCALYN 3
+#define _EUCALYN 1
+#define _LOWER 2
+#define _RAISE 3
 #define _ADJUST 4
 
 enum custom_keycodes {
