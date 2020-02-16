@@ -26,9 +26,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                                           KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                    ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_ESC,                       KC_DEL,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-  //└────────┴────────┴────────┴───┬────┴────────┴──┬─────┴──┬─────┴─┐                ┌─┴──┬─────┴──┬─────┴────────┴┬───────┴────────┴────────┴────────┘
-                                    GUI_T(KC_LANG2), LOWER,   KC_SPC,                  KC_ENT,  RAISE,   ALT_T(KC_LANG1)
-                                // └────────────────┴────────┴───────┘                └────────┴────────┴───────────────┘
+  //└────────┴────────┴────────┴───┬────┴────────┴──┬─────┴──┬─────┴─────┐        ┌─────┴──┬─────┴────────┴─────┬──┴─────┬──┴────────┴────────┴────────┘
+                                    KC_LGUI, LT(_LOWER,KC_LANG2), KC_SPC,          KC_ENT,  LT(_RAISE,KC_LANG1), KC_RALT
+                                // └────────┴────────────────────┴───────┘        └────────┴────────────────────┴────────┘
   ),
 
   [_EUCALYN] = LAYOUT(
@@ -40,9 +40,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_LCTL, KC_A,    KC_O,    KC_E,    KC_I,    KC_U,                                           KC_G,    KC_T,    KC_K,    KC_S,    KC_N,    KC_QUOT,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                    ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_F,    KC_ESC,                       KC_DEL,  KC_B,    KC_H,    KC_J,    KC_L,    KC_SLSH, KC_RSFT,
-  //└────────┴────────┴────────┴───┬────┴────────┴──┬─────┴──┬─────┴─┐                ┌─┴──┬─────┴──┬─────┴────────┴┬───────┴────────┴────────┴────────┘
-                                    GUI_T(KC_LANG2), LOWER,   KC_SPC,                  KC_ENT,  RAISE,   ALT_T(KC_LANG1)
-                                // └────────────────┴────────┴───────┘                └────────┴────────┴───────────────┘
+  //└────────┴────────┴────────┴───┬────┴────────┴──┬─────┴──┬─────┴─────┐        ┌─────┴──┬─────┴────────┴─────┬──┴─────┬──┴────────┴────────┴────────┘
+                                    KC_LGUI, LT(_LOWER,KC_LANG2), KC_SPC,          KC_ENT,  LT(_RAISE,KC_LANG1), KC_RALT
+                                // └────────┴────────────────────┴───────┘        └────────┴────────────────────┴────────┘
   ),
 
   [_LOWER] = LAYOUT(
@@ -87,6 +87,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   )
 };
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+  return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
